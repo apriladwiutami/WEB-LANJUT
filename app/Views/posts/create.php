@@ -164,7 +164,7 @@
                         <img src="/assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">achieto</a>
+                        <a href="#" class="d-block">Anisa</a>
                     </div>
                 </div>
 
@@ -216,6 +216,7 @@
             </div>
             <!-- /.content-header -->
             <!-- Main Content -->
+
             <div class="container">
                 <div class="card">
                     <div class="card-header">
@@ -227,24 +228,46 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="judul">Judul Postingan</label>
-                                        <input type="text" class="form-control" id="judul" name="judul">
+                                        <input type="text" class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" id="judul" name="judul" value="<?= old('judul'); ?>">
+                                        <?php if ($validation->hasError('judul')) : ?>
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('judul'); ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="judul">Slug</label>
-                                        <input type="text" class="form-control" id="judul" name="judul">
+                                        <input type="text" class="form-control <?= ($validation->hasError('slug')) ? 'is-invalid' : ''; ?>" id="slug" name="slug" value="<?= old('slug'); ?>">
+                                        <?php if ($validation->hasError('slug')) : ?>
+                                            <div class=" invalid-feedback">
+                                                <?= $validation->getError('slug'); ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="judul">Kategori Postingan</label>
-                                        <input type="text" class="form-control" id="judul" name="judul">
+                                        <input type="text" class="form-control <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>" id="kategori" name="kategori" value="<?= old('kategori'); ?>">
+                                        <?php if ($validation->hasError('kategori')) : ?>
+                                            <div class=" invalid-feedback">
+                                                <?= $validation->getError('kategori'); ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="judul">Author</label>
-                                        <input type="text" class="form-control" id="judul" name="judul">
+                                        <input type="text" class="form-control <?= ($validation->hasError('author')) ? 'is-invalid' : ''; ?>" id="author" name="author" value="<?= old('author'); ?>">
+                                        <?php if ($validation->hasError('author')) : ?>
+                                            <div class=" invalid-feedback">
+                                                <?= $validation->getError('author'); ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i> Submit
+                                    </button>
                                 </div>
                                 <div class="col-md-8">
-                                    <label for="deskipsi">Deskripsi Postingan</label>
+                                    <label for="deskripsi">Deskripsi Postingan</label>
                                     <br>
                                     <textarea name="deskripsi" id="deskripsi"></textarea>
                                 </div>
@@ -272,8 +295,9 @@
 
     <?= $this->endSection(); ?>
 
-    <?= $this->section('myscript');?>
+    <?php $this->section('myscript'); ?>
     <script>
         $('#deskripsi').summernote()
     </script>
-    <?= $this->endSection('myscript');?>
+
+    <?php $this->endSection(); ?>
